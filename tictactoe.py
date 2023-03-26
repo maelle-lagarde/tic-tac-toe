@@ -4,6 +4,7 @@ from tkinter import *
 root = Tk()
 root.title("Tic Tac Toe !")
 
+# variables globales.
 player_character = ""
 ai_character = ""
 positions = ["-", "-", "-", "-", "-", "-", "-", "-", "-"]
@@ -15,7 +16,7 @@ game_over = False # toujours faux quand le jeu commence.
 x_scores = 0
 o_scores = 0
 
-# affiche scores.
+# affiche les scores.
 x_label = Label(root, text="Player X : " + str(x_scores), font=("Open Sans", 13))
 o_label = Label(root, text="Player O : " + str(o_scores), font=("Open Sans", 13))
 x_label.grid(row=9, column=0, columnspan=3)
@@ -61,8 +62,6 @@ def check_game_over(pos):
     else:
         check_tie(pos)
         game_over = False
-    """else:
-        game_over = False"""
     return game_over
 
 def ai_turn():
@@ -89,12 +88,12 @@ def ai_turn():
             new_button.grid(row=r, column=c, sticky='nesw')
             game_over = check_game_over(positions)
 
-            # Vérifier si la partie est terminée
+            # vérifie si la partie est terminée
             game_over = check_game_over(positions)
             if game_over:
                 break
 
-            # Vérifier si égalité.
+            # vérifie si égalité.
             if check_tie(positions):
                 game_over = True
                 showinfo("Égalité!")
@@ -174,13 +173,13 @@ def draw_board():
     bottom_right = Button(root, text=positions[8], command=lambda: player_position(8)).grid(row=7, column=2, sticky='nesw')
     win_label = Label(root, text="                ").grid(row=8, column=0, columnspan=3)
 
-# widget definition
+# définition des widgets.
 main_label = Label(root, text="Welcome to Tic Tac Toe !", font=("Open Sans", 13))
 player_select_label = Label(root, text="Select a character to play as.", font=("Open Sans", 13))
 x_button = Button(root, text="X", font=("Open Sans", 13), command=x_select)
 o_button = Button(root, text="O", font=("Open Sans", 13), command=o_select)
 
-# draw onto screen
+# dessine sur la grille de jeu.
 main_label.grid(row=0, column=0, columnspan = 3)
 player_select_label.grid(row=1, column=0, columnspan = 3)
 x_button.grid(row=2, column=0, sticky = 'ew')
